@@ -1,0 +1,144 @@
+---
+import Nav from "@/components/Nav.astro";
+import { getAllProgramPaths, getPrograma } from "@/lib/api";
+import Layout from "@/layouts/Layout.astro";
+import type { Programa } from "@/types";
+
+export const prerender = true;
+
+const { tipoSlug, slug } = Astro.params as { tipoSlug: string; slug: string };
+
+let programa: Programa | null = null;
+try {
+  const resultado = await getPrograma(slug);
+  programa = resultado.tipoPrograma?.slug === tipoSlug ? resultado : null;
+  if (!programa) Astro.response.status = 404;
+} catch {
+  Astro.response.status = 404;
+}
+
+export async function getStaticPaths() {
+  const paths = await getAllProgramPaths();
+  return paths.map(({ tipoSlug, slug }) => ({ params: { tipoSlug, slug } }));
+}
+
+const formatSoles = (valor: number | null | undefined) =>
+	new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN" }).format(valor ?? 0);
+
+const planEstudios = programa?.planEstudios ?? [];
+const imagen = programa?.imagen ?? "/images/placeholder.png";
+const inversion = programa?.inversion ?? {
+  costoMatricula: 0,
+  cantidadMatriculas: 0,
+  sumaCostosCursos: 0,
+  inversionTotal: 0,
+};
+---
+
+<Layout>
+	<Nav title={programa?.tipoPrograma?.nombre ?? programa?.tipoPrograma?.slug} />
+	<main class="mx-auto max-w-6xl px-4 py-12">
+		{programa ? (
+		<section class="relative overflow-hidden rounded-3xl border border-zinc-800">
+			<img src={imagen} alt={programa.nombre} class="absolute inset-0 h-full w-full object-cover opacity-40" />
+			<div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
+			<div class="relative p-8 pt-40 sm:p-12 sm:pt-52">
+			<div class="flex flex-wrap gap-2 text-xs text-zinc-300">
+				{programa.modalidad?.nombre && (
+					<span class="rounded-full bg-white/10 px-3 py-1">{programa.modalidad.nombre}</span>
+				)}
+				{programa.facultad?.nombre && (
+					<span class="rounded-full bg-white/10 px-3 py-1">{programa.facultad.nombre}</span>
+				)}
+				{programa.tipoPrograma?.nombre && (
+					<span class="rounded-full bg-white/10 px-3 py-1">{programa.tipoPrograma.nombre}</span>
+				)}
+			</div>
+				<h1 class="mt-4 font-anton text-3xl uppercase tracking-wide text-white sm:text-5xl">
+					{programa.nombre}
+				</h1>
+			</div>
+		</section>
+
+		<section class="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
+			<div class="space-y-10">
+				<article>
+					<h2 class="font-anton text-xl uppercase tracking-wide text-white">Objetivo general</h2>
+					<p class="mt-3 leading-relaxed text-zinc-300">{programa.objetivoGeneral ?? "No disponible"}</p>
+				</article>
+				<article>
+					<h2 class="font-anton text-xl uppercase tracking-wide text-white">Objetivos específicos</h2>
+					<p class="mt-3 leading-relaxed text-zinc-300">{programa.objetivosEspecificos ?? "No disponible"}</p>
+				</article>
+				<article>
+					<h2 class="font-anton text-xl uppercase tracking-wide text-white">Perfil del posgraduado</h2>
+					<p class="mt-3 leading-relaxed text-zinc-300">{programa.perfilPosgraduado ?? "No disponible"}</p>
+				</article>
+
+				<article>
+					<h2 class="font-anton text-xl uppercase tracking-wide text-white">Plan de estudios</h2>
+					<div class="mt-4 space-y-8">
+						{planEstudios.map((periodoPlan) => (
+							<div>
+								<h3 class="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+									{periodoPlan.periodo.nombre}
+								</h3>
+								<table class="mt-3 w-full text-sm">
+									<thead>
+										<tr class="border-b border-zinc-800 text-left text-xs uppercase text-zinc-500">
+											<th class="py-2 font-medium">Asignatura</th>
+											<th class="py-2 font-medium">Créditos</th>
+											<th class="py-2 font-medium">Costo</th>
+											<th class="py-2 font-medium">Cat.</th>
+										</tr>
+									</thead>
+									<tbody>
+										{periodoPlan.cursos.map((curso) => (
+											<tr class="border-b border-zinc-900">
+												<td class="py-3 text-zinc-200">{curso.asignatura.nombre}</td>
+												<td class="py-3 text-zinc-400">{curso.creditos}</td>
+												<td class="py-3 text-zinc-400">{formatSoles(curso.costo)}</td>
+												<td class="py-3 text-zinc-400">{curso.categoria.nombre}</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
+						))}
+					</div>
+				</article>
+			</div>
+
+			<aside class="h-fit rounded-2xl border border-zinc-800 bg-zinc-900 p-6 lg:sticky lg:top-6">
+				<h2 class="font-anton text-lg uppercase tracking-wide text-white">Inversión</h2>
+				<dl class="mt-4 space-y-3 text-sm">
+					<div class="flex justify-between">
+						<dt class="text-zinc-400">Matrícula</dt>
+						<dd class="text-zinc-200">{formatSoles(inversion.costoMatricula)}</dd>
+					</div>
+					<div class="flex justify-between">
+						<dt class="text-zinc-400">N° de matrículas</dt>
+						<dd class="text-zinc-200">{inversion.cantidadMatriculas}</dd>
+					</div>
+					<div class="flex justify-between">
+						<dt class="text-zinc-400">Suma de cursos</dt>
+						<dd class="text-zinc-200">{formatSoles(inversion.sumaCostosCursos)}</dd>
+					</div>
+					<div class="mt-3 flex justify-between border-t border-zinc-700 pt-3 text-base font-semibold text-white">
+						<dt>Inversión total</dt>
+						<dd>{formatSoles(inversion.inversionTotal)}</dd>
+					</div>
+				</dl>
+			</aside>
+		</section>
+		) : (
+		<section class="py-24 text-center">
+			<h1 class="font-anton text-3xl uppercase tracking-wide text-white">Programa no encontrado</h1>
+			<p class="mt-3 text-zinc-400">No existe un programa con el slug «{slug}».</p>
+			<a href="/" class="mt-8 inline-block rounded-full border border-zinc-700 px-6 py-2 text-sm text-zinc-300 hover:border-zinc-500">
+				Volver al inicio
+			</a>
+		</section>
+		)}
+	</main>
+</Layout>

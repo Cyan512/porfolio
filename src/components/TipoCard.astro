@@ -1,0 +1,24 @@
+---
+import Icon from "@/components/Icon.astro";
+import type { TipoPrograma } from "@/types";
+const { tipo } = Astro.props as { tipo: TipoPrograma };
+---
+
+<a
+	href={`/${tipo.slug}`}
+	class="group relative block overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-colors"
+>
+	<img
+		src={tipo.imagenCard}
+		alt={tipo.nombre}
+		class="h-48 w-full object-cover opacity-60 transition-opacity group-hover:opacity-80"
+		loading="lazy"
+	/>
+	<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+	<div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+		<h2 class="font-anton text-2xl uppercase tracking-wide text-white">{tipo.nombre}</h2>
+		<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-transform group-hover:translate-x-1">
+			<Icon name="arrow-right" />
+		</span>
+	</div>
+</a>
