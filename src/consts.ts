@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.spidermanbrandnewday.es';
+export const SITE_URL = 'https://porfolio-blush-iota.vercel.app';
 
 /** Compra de entradas (Sony Pictures España). */
 export const TICKETS_URL = 'https://sonypictures.es/pelicula/spiderman-brand-new-day';
