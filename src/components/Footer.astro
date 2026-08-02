@@ -1,0 +1,51 @@
+---
+const year = new Date().getFullYear();
+const programas = [
+  { nombre: "Doctorados", href: "/doctorados" },
+  { nombre: "Maestrías", href: "/maestrias" },
+  { nombre: "Residentado Médico", href: "/residentado-medico" },
+  { nombre: "Segundas Especialidades", href: "/segundas-especialidades" },
+];
+---
+
+<footer class="border-t border-zinc-800 bg-black/40">
+	<div class="container px-4 py-12">
+		<div class="grid gap-10 sm:grid-cols-3">
+			<div>
+				<a href="/" class="font-anton text-xl uppercase tracking-widest text-white">
+					Posgrado<span class="text-zinc-500"> UNSAAC</span>
+				</a>
+				<p class="mt-3 max-w-xs text-sm leading-relaxed text-zinc-400">
+					Estudios de posgrado con docencia de excelencia e investigación de vanguardia
+					al servicio del desarrollo de la región.
+				</p>
+			</div>
+			<div>
+				<h2 class="text-sm font-semibold uppercase tracking-wider text-white">Programas</h2>
+				<ul class="mt-3 space-y-2">
+					{programas.map((p) => (
+						<li>
+							<a href={p.href} class="text-sm text-zinc-400 transition-colors hover:text-white">
+								{p.nombre}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+			<div>
+				<h2 class="text-sm font-semibold uppercase tracking-wider text-white">Contacto</h2>
+				<ul class="mt-3 space-y-2 text-sm text-zinc-400">
+					<li>Escuela de Posgrado UNSAAC</li>
+					<li>Av. de la Cultura 733, Cusco</li>
+					<li>Perú</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="border-t border-zinc-800/70">
+		<div class="container flex flex-wrap items-center justify-between gap-2 px-4 py-4 text-xs text-zinc-500">
+			<p>© {year} Posgrado UNSAAC. Todos los derechos reservados.</p>
+			<p>Universidad Nacional de San Antonio Abad del Cusco</p>
+		</div>
+	</div>
+</footer>

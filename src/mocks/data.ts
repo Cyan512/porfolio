@@ -9,6 +9,7 @@ import type {
 import about from "@/assets/images/about.jpg";
 import admision from "@/assets/images/admision.jpg";
 import banner from "@/assets/images/banner.jpg";
+import heroBg from "@/assets/images/hero-bg.png";
 import info from "@/assets/images/info.jpg";
 import placeholder from "@/assets/images/placeholder.png";
 
@@ -18,28 +19,28 @@ export const tiposMock: TipoPrograma[] = [
     nombre: "Doctorados",
     slug: "doctorados",
     imagenCard: banner,
-    imagenHero: "/images/hero-bg.png",
+    imagenHero: heroBg,
   },
   {
     id: 2,
     nombre: "Maestrías",
     slug: "maestrias",
     imagenCard: admision,
-    imagenHero: "/images/hero-bg.png",
+    imagenHero: heroBg,
   },
   {
     id: 3,
     nombre: "Residentado Médico",
     slug: "residentado-medico",
     imagenCard: info,
-    imagenHero: "/images/hero-bg.png",
+    imagenHero: heroBg,
   },
   {
     id: 4,
     nombre: "Segundas Especialidades",
     slug: "segundas-especialidades",
     imagenCard: about,
-    imagenHero: "/images/hero-bg.png",
+    imagenHero: heroBg,
   },
 ];
 

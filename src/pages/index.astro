@@ -1,6 +1,7 @@
 ---
+import { getImage, Image } from "astro:assets";
+import heroBg from "@/assets/images/hero-bg.png";
 import JsonLd from "@/components/JsonLd.astro";
-import Nav from "@/components/Nav.astro";
 import TipoCard from "@/components/TipoCard.astro";
 import { getTiposPrograma } from "@/lib/api";
 import Layout from "@/layouts/Layout.astro";
@@ -16,27 +17,74 @@ const schema = {
     "Estudios de posgrado en la Universidad Nacional de San Antonio Abad del Cusco: maestrías, doctorados, residentado médico y segundas especialidades.",
   inLanguage: "es-PE",
 };
+
+const heroImage = await getImage({ src: heroBg, width: 1920, height: 948 });
 ---
 
 <Layout
 	title="Posgrado UNSAAC — Maestrías, Doctorados y Especialidades"
 	description="Estudios de posgrado en la UNSAAC: maestrías, doctorados, residentado médico y segundas especialidades con docencia de excelencia e investigación de vanguardia."
-	image="/images/hero-bg.png"
+	image={heroImage.src}
 >
 	<JsonLd data={schema} />
-	<Nav />
-	<main class="mx-auto max-w-6xl px-4 py-16">
-		<section class="py-12 text-center">
-			<h1 class="font-anton text-4xl uppercase tracking-wide text-white sm:text-6xl">
-				Estudios de Posgrado
-			</h1>
-			<p class="mx-auto mt-4 max-w-2xl text-zinc-400">
-				Programas de maestría y doctorado con docencia de excelencia, investigación
-				de vanguardia y compromiso con el desarrollo de la región.
-			</p>
+	<main>
+		<section class="relative flex items-center overflow-hidden border-b border-zinc-800">
+			<Image
+				src={heroBg}
+				alt=""
+				class="absolute inset-0 h-full w-full object-cover"
+				width={1920}
+				height={948}
+				sizes="100vw"
+				fetchpriority="high"
+				loading="eager"
+			/>
+			<div class="absolute inset-0 z-10 bg-gradient-to-r from-black/85 via-black/60 to-black/25" />
+			<div class="container relative z-20 px-4 py-20 sm:min-h-[70svh] sm:py-28">
+				<div class="text-center sm:mr-auto sm:max-w-xl sm:text-left">
+					<span
+						class="inline-block rounded-full border border-zinc-500/60 bg-black/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-zinc-300 backdrop-blur"
+					>
+						Posgrado UNSAAC
+					</span>
+					<h1 class="mt-5 font-anton text-4xl uppercase leading-[1.05] tracking-wide text-white sm:text-6xl lg:text-7xl">
+						Estudios de Posgrado
+					</h1>
+					<p class="mt-5 text-base leading-relaxed text-zinc-300 sm:text-lg">
+						Programas de maestría y doctorado con docencia de excelencia,
+						investigación de vanguardia y compromiso con el desarrollo de la región.
+					</p>
+					<div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+						<a
+							href="/maestrias"
+							class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-80"
+						>
+							Explorar maestrías
+						</a>
+						<a
+							href="/doctorados"
+							class="rounded-full border border-zinc-500/60 bg-black/40 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-zinc-300"
+						>
+							Doctorados
+						</a>
+					</div>
+					<div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+						{tipos.map((tipo) => (
+							<a
+								href={`/${tipo.slug}`}
+								class="rounded-full border border-zinc-600/60 bg-black/40 px-4 py-1.5 text-xs text-zinc-300 backdrop-blur transition-colors hover:border-zinc-400 hover:text-white"
+							>
+								{tipo.nombre}
+							</a>
+						))}
+					</div>
+				</div>
+			</div>
 		</section>
-		<section class="grid gap-6 sm:grid-cols-2">
-			{tipos.map((tipo) => <TipoCard tipo={tipo} />)}
+		<section class="container px-4 py-16">
+			<div class="grid gap-6 sm:grid-cols-2">
+				{tipos.map((tipo) => <TipoCard tipo={tipo} />)}
+			</div>
 		</section>
 	</main>
 </Layout>

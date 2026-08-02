@@ -1,4 +1,6 @@
 ---
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav.astro";
 import Seo from "@/components/Seo.astro";
 import "@/styles/global.css";
 
@@ -8,6 +10,7 @@ export interface LayoutProps {
   image?: string;
   canonical?: string;
   noindex?: boolean;
+  navTitle?: string;
 }
 
 const {
@@ -16,6 +19,7 @@ const {
   image,
   canonical,
   noindex = false,
+  navTitle,
 } = Astro.props as LayoutProps;
 ---
 
@@ -37,7 +41,9 @@ const {
 		/>
 	</head>
 	<body>
+		<Nav title={navTitle} />
 		<slot />
+		<Footer />
 	</body>
 </html>
 

@@ -1,6 +1,5 @@
 ---
 import JsonLd from "@/components/JsonLd.astro";
-import Nav from "@/components/Nav.astro";
 import ProgramaCard from "@/components/ProgramaCard.astro";
 import { getProgramasByTipo, getTiposPrograma } from "@/lib/api";
 import Layout from "@/layouts/Layout.astro";
@@ -56,10 +55,10 @@ const itemListSchema = tipo && {
 	image={typeof tipo?.imagenCard === "string" ? tipo.imagenCard : undefined}
 	canonical={`/${slug}`}
 	noindex={!tipo}
+	navTitle={tipo?.nombre}
 >
 	{tipo && <JsonLd data={breadcrumbSchema} />}
 	{tipo && <JsonLd data={itemListSchema} />}
-	<Nav title={tipo?.nombre} />
 	<main class="mx-auto max-w-6xl px-4 py-12" id="app" data-slug={slug}>
 		{tipo ? (
 		<header class="flex flex-wrap items-end justify-between gap-4">
