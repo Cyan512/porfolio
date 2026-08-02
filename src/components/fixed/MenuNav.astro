@@ -1,5 +1,8 @@
 ---
-import { SECTIONS } from "@/consts/sections";
+// Arriba a la izquierda: un solo botón (icono + sección actual). Al abrirlo,
+// la etiqueta deja paso al panel con el índice de secciones. La página de detrás
+// no se toca: ni velo, ni desenfoque, ni cambio de opacidad.
+import { SECTIONS, PILL } from "@/consts";
 import Menu from "@/assets/icons/menu.svg";
 import Close from "@/assets/icons/close.svg";
 
@@ -17,7 +20,10 @@ const initial = SECTIONS[0].label;
     >
         <span
             data-menu-part
-            class="grid size-12 shrink-0 place-items-center rounded-full pill"
+            class:list={[
+                "grid size-12 shrink-0 place-items-center rounded-full",
+                PILL,
+            ]}
         >
             <Menu class="w-[18px]" data-menu-icon="open" aria-hidden="true" />
             <Close
@@ -33,7 +39,10 @@ const initial = SECTIONS[0].label;
         <span
             data-menu-part
             data-menu-current
-            class="hidden h-12 w-[122px] items-center gap-[5px] px-4 font-display text-title-small uppercase tracking-wide sm:flex pill"
+            class:list={[
+                "hidden h-12 w-[122px] items-center gap-[5px] px-4 font-display text-title-small uppercase tracking-wide sm:flex",
+                PILL,
+            ]}
         >
             <span
                 class="size-1.5 shrink-0 rounded-full bg-current"
@@ -50,7 +59,10 @@ const initial = SECTIONS[0].label;
         class="menu-panel"
     >
         <ul
-            class="flex w-[220px] flex-col px-4 font-display text-title-small uppercase tracking-wide text-neutral-white"
+            class:list={[
+                "flex w-[220px] flex-col px-4 font-display text-title-small uppercase tracking-wide text-neutral-white",
+                PILL,
+            ]}
         >
             {
                 SECTIONS.map((section) => (
@@ -107,8 +119,8 @@ const initial = SECTIONS[0].label;
 </style>
 
 <script>
-    //import { ScrollTrigger } from "@/lib/gsap";
-    import { SECTIONS } from "@/consts/sections";
+    // import { ScrollTrigger } from "@/lib/gsap";
+    import { SECTIONS } from "@/consts";
     import { $, $$ } from "@/lib/dom";
 
     const label = $("[data-current-section]");

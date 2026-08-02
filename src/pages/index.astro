@@ -1,22 +1,22 @@
 ---
+import AdmissionProcess from "@/components/sections/AdmissionProcess.astro";
+import StudentResources from "@/components/sections/StudentResources.astro";
+import Announcements from "@/components/sections/Announcements.astro";
+import Programs from "@/components/sections/Programs.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Quote from "@/components/sections/Quote.astro";
+import Stats from "@/components/sections/Stats.astro";
 import Layout from "@/layouts/Layout.astro";
-import About from "@/components/About.astro";
-import Services from "@/components/Services.astro";
-import Plans from "@/components/Plans.astro";
-import FAQ from "@/components/FAQ.astro";
-import Contact from "@/components/Contact.astro";
-import FixedUI from "@/components/fixed/FixedUI.astro";
-import Hero from "../components/Hero.astro";
 ---
 
 <Layout>
-	<FixedUI />
 	<Hero />
 	<main>
-		<About />
-		<Services />
-		<Plans />
-		<FAQ />
-		<Contact />
+		<Quote />
+		<AdmissionProcess />
+		<Announcements />
+		<Stats />
+		<Programs />
+		<StudentResources />
 	</main>
 </Layout>

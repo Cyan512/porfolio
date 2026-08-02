@@ -1,0 +1,70 @@
+---
+const content = {
+    title: "La educación es el arma más poderosa que puedes usar para cambiar el mundo",
+    description:
+        "Desde 1984, nos hemos dedicado a una misión singular: dotar a la próxima generación de las habilidades de pensamiento crítico necesarias para desenvolverse en un mundo complejo. La Escuela de Posgrado de la Universidad Nacional de San Antonio Abad del Cusco no es solo una universidad, es un crisol para el cambio.",
+};
+---
+
+<section class="quote relative w-full overflow-hidden py-16 sm:py-20 lg:py-32">
+    <!-- Patrón de fondo -->
+    <div class="quote__pattern absolute inset-0 z-0"></div>
+
+    <div class="container relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+            <!-- Contenido -->
+            <div class="space-y-6 text-center lg:col-span-6 lg:text-left">
+                <div class="space-y-4">
+                    <h2
+                        class="text-3xl font-semibold leading-tight tracking-tight text-primary sm:text-4xl lg:text-5xl"
+                    >
+                        {content.title}
+                    </h2>
+
+                    <p
+                        class="text-base leading-relaxed text-muted-foreground sm:text-lg"
+                    >
+                        {content.description}
+                    </p>
+                </div>
+
+                <figcaption class="text-sm sm:text-base">
+                    <strong class="block font-semibold">
+                        Dr. Pepito W. Hamilton
+                    </strong>
+
+                    <span class="text-muted-foreground">
+                        Director de la Escuela de Posgrado
+                    </span>
+                </figcaption>
+            </div>
+
+            <!-- Imagen -->
+            <figure
+                class="quote__image relative aspect-square overflow-hidden sm:aspect-4/3 lg:col-span-6"
+            >
+                <img
+                    src="/images/about.jpg"
+                    alt="Escuela de Posgrado UNSAAC"
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-full object-cover"
+                />
+            </figure>
+        </div>
+    </div>
+</section>
+
+<style>
+    .quote__pattern {
+        background-image: url("/images/bg.png");
+        background-repeat: repeat;
+        background-size: auto;
+        opacity: 0.15;
+        pointer-events: none;
+    }
+
+    .quote__image {
+        isolation: isolate;
+    }
+</style>

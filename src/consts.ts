@@ -1,57 +1,58 @@
-export const SITE_URL = 'https://porfolio-blush-iota.vercel.app';
+export const SITE_URL = 'https://posgrado.unsaac.edu.pe/';
 
-/** Compra de entradas (Sony Pictures España). */
-export const TICKETS_URL = 'https://sonypictures.es/pelicula/spiderman-brand-new-day';
-
-/** Tráiler oficial en YouTube (embed nocookie). */
-export const TRAILER_YOUTUBE = {
-	id: 'owfWVJoxXR4',
-	start: 25
-} as const;
-
-export const SEO = {
-	siteName: 'Spider-Man: Brand New Day',
-	movieTitle: 'Spider-Man: Brand New Day',
-	title: 'Spider-Man: Brand New Day — Exclusivamente en cines el 29 de julio',
-	description:
-		'Spider-Man: Brand New Day llega exclusivamente a cines el 29 de julio. Una nueva etapa para Peter Parker. Descubre el tráiler, la sinopsis y reserva tus entradas.',
-	author: 'Sony Pictures',
-	keywords:
-		'Spider-Man, Brand New Day, Tom Holland, Zendaya, Marvel, cine, estreno, tráiler, entradas, Destin Daniel Cretton',
-	image: '/images/poster-870.webp',
-	imageAlt: 'Cartel oficial de Spider-Man: Brand New Day',
-	imageWidth: 870,
-	imageHeight: 1088,
-	releaseDateISO: '2026-07-29',
-	director: 'Destin Daniel Cretton',
-	actors: [
-		'Tom Holland',
-		'Zendaya',
-		'Sadie Sink',
-		'Jacob Batalon',
-		'Jon Bernthal',
-		'Tramell Tillman',
-		'Michael Mando',
-		'Mark Ruffalo'
-	]
-} as const;
+export interface Page {
+	id: string;
+	label: string;
+	href: string;
+}
 
 export interface Section {
 	id: string;
 	label: string;
 }
 
-/** Secciones de la página, en orden. El indicador del menú se apoya en esta lista. */
+export const PAGE: Section[] = [
+	{ id: 'home', label: 'Inicio' },
+	{ id: 'home', label: 'Comunicados' },
+]
+
 export const SECTIONS: Section[] = [
-	{ id: 'trailer', label: 'Trailer' },
-	// TODO: la sección «Estreno» sale en el menú del diseño pero todavía no existe
-	// en la página; hasta que se cree, su enlace no lleva a ninguna parte.
-	{ id: 'estreno', label: 'Estreno' },
-	{ id: 'sinopsis', label: 'Sinopsis' },
-	{ id: 'videos', label: 'Videos' },
-	{ id: 'galeria', label: 'Galería' },
-	{ id: 'partners', label: 'Partners' }
+	{ id: 'home', label: 'Inicio' },
+	{ id: 'about', label: 'Sobre mí' },
+	{ id: 'projects', label: 'Proyectos' },
+	{ id: 'services', label: 'Servicios' },
+	{ id: 'experience', label: 'Experiencia' },
+	{ id: 'contact', label: 'Contacto' },
 ];
+
+export const studentResources = [
+	{
+		title: "Reglamentos y Normas",
+		description:
+			"Consulta los reglamentos, normas y disposiciones que orientan la vida académica y establecen los derechos y deberes de los estudiantes.",
+	},
+	{
+		title: "Trámites Académicos",
+		description:
+			"Encuentra información y orientación sobre los principales trámites académicos, requisitos, procedimientos y documentos que necesitas realizar.",
+	},
+	{
+		title: "Calendario Académico y de Pagos",
+		description:
+			"Revisa las fechas importantes del periodo académico, así como los plazos establecidos para matrículas, pagos y demás actividades administrativas.",
+	},
+	{
+		title: "Ruta del Graduado",
+		description:
+			"Conoce los pasos, requisitos y procedimientos necesarios para culminar tu formación académica y gestionar el proceso de graduación.",
+	},
+	{
+		title: "Acreditación del Idioma",
+		description:
+			"Consulta los requisitos y procedimientos para acreditar el dominio de un idioma como parte de los requisitos para la culminación de tus estudios.",
+	},
+];
+
 
 /** Clases compartidas por las píldoras y los botones redondos de la UI fija. */
 export const PILL =
