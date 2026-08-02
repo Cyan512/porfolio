@@ -1,4 +1,5 @@
 ---
+import JsonLd from "@/components/JsonLd.astro";
 import Nav from "@/components/Nav.astro";
 import ProgramaCard from "@/components/ProgramaCard.astro";
 import { getProgramasByTipo, getTiposPrograma } from "@/lib/api";
@@ -23,9 +24,41 @@ export async function getStaticPaths() {
   const tipos = await getTiposPrograma();
   return tipos.map(({ slug }) => ({ params: { slug } }));
 }
+
+const tipoNombre = tipo?.nombre ?? slug;
+const siteUrl = import.meta.env.SITE;
+
+const breadcrumbSchema = tipo && {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: tipoNombre, item: `${siteUrl}/${slug}` },
+  ],
+};
+
+const itemListSchema = tipo && {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `Programas de ${tipoNombre}`,
+  itemListElement: inicial.content.map((p, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: p.nombre,
+    url: `${siteUrl}/${slug}/${p.slug}`,
+  })),
+};
 ---
 
-<Layout>
+<Layout
+	title={`${tipoNombre} | Posgrado UNSAAC`}
+	description={`Programas de ${tipoNombre.toLowerCase()} en la UNSAAC: plan de estudios, inversión y proceso de admisión.`}
+	image={typeof tipo?.imagenCard === "string" ? tipo.imagenCard : undefined}
+	canonical={`/${slug}`}
+	noindex={!tipo}
+>
+	{tipo && <JsonLd data={breadcrumbSchema} />}
+	{tipo && <JsonLd data={itemListSchema} />}
 	<Nav title={tipo?.nombre} />
 	<main class="mx-auto max-w-6xl px-4 py-12" id="app" data-slug={slug}>
 		{tipo ? (

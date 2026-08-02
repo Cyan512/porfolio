@@ -1,5 +1,6 @@
 ---
 import Icon from "@/components/Icon.astro";
+import Photo from "@/components/Photo.astro";
 import type { TipoPrograma } from "@/types";
 const { tipo } = Astro.props as { tipo: TipoPrograma };
 ---
@@ -8,11 +9,13 @@ const { tipo } = Astro.props as { tipo: TipoPrograma };
 	href={`/${tipo.slug}`}
 	class="group relative block overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-colors"
 >
-	<img
+	<Photo
 		src={tipo.imagenCard}
 		alt={tipo.nombre}
 		class="h-48 w-full object-cover opacity-60 transition-opacity group-hover:opacity-80"
-		loading="lazy"
+		width={800}
+		height={400}
+		sizes="(min-width: 640px) 50vw, 100vw"
 	/>
 	<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 	<div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">

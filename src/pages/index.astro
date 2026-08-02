@@ -1,13 +1,29 @@
 ---
+import JsonLd from "@/components/JsonLd.astro";
 import Nav from "@/components/Nav.astro";
 import TipoCard from "@/components/TipoCard.astro";
 import { getTiposPrograma } from "@/lib/api";
 import Layout from "@/layouts/Layout.astro";
 
 const tipos = await getTiposPrograma();
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Posgrado UNSAAC",
+  url: import.meta.env.SITE,
+  description:
+    "Estudios de posgrado en la Universidad Nacional de San Antonio Abad del Cusco: maestrías, doctorados, residentado médico y segundas especialidades.",
+  inLanguage: "es-PE",
+};
 ---
 
-<Layout>
+<Layout
+	title="Posgrado UNSAAC — Maestrías, Doctorados y Especialidades"
+	description="Estudios de posgrado en la UNSAAC: maestrías, doctorados, residentado médico y segundas especialidades con docencia de excelencia e investigación de vanguardia."
+	image="/images/hero-bg.png"
+>
+	<JsonLd data={schema} />
 	<Nav />
 	<main class="mx-auto max-w-6xl px-4 py-16">
 		<section class="py-12 text-center">

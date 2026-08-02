@@ -6,34 +6,39 @@ import type {
   Programa,
   TipoPrograma,
 } from "@/types";
+import about from "@/assets/images/about.jpg";
+import admision from "@/assets/images/admision.jpg";
+import banner from "@/assets/images/banner.jpg";
+import info from "@/assets/images/info.jpg";
+import placeholder from "@/assets/images/placeholder.png";
 
 export const tiposMock: TipoPrograma[] = [
   {
     id: 1,
     nombre: "Doctorados",
     slug: "doctorados",
-    imagenCard: "/images/banner.jpg",
+    imagenCard: banner,
     imagenHero: "/images/hero-bg.png",
   },
   {
     id: 2,
     nombre: "Maestrías",
     slug: "maestrias",
-    imagenCard: "/images/admision.jpg",
+    imagenCard: admision,
     imagenHero: "/images/hero-bg.png",
   },
   {
     id: 3,
     nombre: "Residentado Médico",
     slug: "residentado-medico",
-    imagenCard: "/images/info.jpg",
+    imagenCard: info,
     imagenHero: "/images/hero-bg.png",
   },
   {
     id: 4,
     nombre: "Segundas Especialidades",
     slug: "segundas-especialidades",
-    imagenCard: "/images/about.jpg",
+    imagenCard: about,
     imagenHero: "/images/hero-bg.png",
   },
 ];
@@ -86,7 +91,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Desarrollar competencias en dirección estratégica; fortalecer habilidades de liderazgo y toma de decisiones; aplicar herramientas de gestión financiera y de operaciones.",
     perfilPosgraduado: "El egresado podrá desempeñarse como gerente general, director de operaciones o consultor empresarial en organizaciones públicas y privadas.",
     costoMatricula: 3500.0,
-    imagen: "/images/about.jpg",
+    imagen: about,
     modalidad: "Presencial",
     facultad: "Ciencias Administrativas",
     planEstudios: [
@@ -119,7 +124,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Analizar el marco normativo de la gestión pública; aplicar herramientas de presupuesto y control gubernamental; fortalecer la gestión por resultados.",
     perfilPosgraduado: "El egresado podrá dirigir unidades de gestión, formular políticas públicas y asesorar a gobiernos regionales y locales.",
     costoMatricula: 3200.0,
-    imagen: "/images/banner.jpg",
+    imagen: banner,
     modalidad: "Semipresencial",
     facultad: "Ciencias Sociales",
     planEstudios: [
@@ -149,7 +154,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Dominar arquitecturas de software modernas; aplicar metodologías ágiles de desarrollo; gestionar proyectos tecnológicos y calidad de software.",
     perfilPosgraduado: "El egresado podrá desempeñarse como arquitecto de software, líder técnico o gerente de proyectos tecnológicos.",
     costoMatricula: 3600.0,
-    imagen: "/images/info.jpg",
+    imagen: info,
     modalidad: "Presencial",
     facultad: "Ingenierías",
     planEstudios: [
@@ -180,7 +185,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Aplicar estrategias didácticas innovadoras; diseñar currículos por competencias; conducir procesos de investigación educativa.",
     perfilPosgraduado: "El egresado podrá ejercer la docencia universitaria, liderar procesos de innovación curricular y desarrollar investigación educativa.",
     costoMatricula: 2800.0,
-    imagen: "/images/admision.jpg",
+    imagen: admision,
     modalidad: "Presencial",
     facultad: "Ciencias de la Educación",
     planEstudios: [
@@ -210,7 +215,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Analizar los determinantes sociales de la salud; aplicar epidemiología en la toma de decisiones; gestionar servicios de salud.",
     perfilPosgraduado: "El egresado podrá dirigir establecimientos de salud, formular programas preventivos y asesorar políticas sanitarias.",
     costoMatricula: 3000.0,
-    imagen: "/images/placeholder.png",
+    imagen: placeholder,
     modalidad: "Semipresencial",
     facultad: "Ciencias de la Salud",
     planEstudios: [
@@ -239,7 +244,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Aplicar normas internacionales de información financiera; diseñar sistemas de control interno; realizar auditorías integrales.",
     perfilPosgraduado: "El egresado podrá desempeñarse como auditor externo, gerente financiero o consultor tributario.",
     costoMatricula: 3100.0,
-    imagen: "/images/about.jpg",
+    imagen: about,
     modalidad: "Presencial",
     facultad: "Ciencias Contables",
     planEstudios: [
@@ -269,7 +274,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Desarrollar pensamiento crítico e investigativo; dominar metodologías cuantitativas y cualitativas; contribuir con publicaciones científicas.",
     perfilPosgraduado: "El egresado podrá liderar líneas de investigación, dirigir programas doctorales y publicar en revistas indexadas.",
     costoMatricula: 4500.0,
-    imagen: "/images/banner.jpg",
+    imagen: banner,
     modalidad: "Presencial",
     facultad: "Ciencias Administrativas",
     planEstudios: [
@@ -298,7 +303,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Dominar la investigación biomédica y epidemiológica; aplicar bioética en investigación; producir publicaciones científicas.",
     perfilPosgraduado: "El egresado podrá dirigir centros de investigación, asesorar tesis doctorales y liderar estudios clínicos.",
     costoMatricula: 4200.0,
-    imagen: "/images/info.jpg",
+    imagen: info,
     modalidad: "Presencial",
     facultad: "Ciencias de la Salud",
     planEstudios: [
@@ -327,7 +332,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Desarrollar líneas de investigación educativa; analizar políticas educativas; producir conocimiento pedagógico original.",
     perfilPosgraduado: "El egresado podrá dirigir unidades de posgrado, asesorar investigaciones y liderar reformas educativas.",
     costoMatricula: 4000.0,
-    imagen: "/images/admision.jpg",
+    imagen: admision,
     modalidad: "Semipresencial",
     facultad: "Ciencias de la Educación",
     planEstudios: [
@@ -356,7 +361,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Aplicar tecnologías limpias; diseñar estudios de impacto ambiental; generar conocimiento científico sobre el cambio climático.",
     perfilPosgraduado: "El egresado podrá dirigir institutos de investigación, asesorar políticas ambientales y liderar proyectos tecnológicos.",
     costoMatricula: 4300.0,
-    imagen: "/images/placeholder.png",
+    imagen: placeholder,
     modalidad: "Presencial",
     facultad: "Ingenierías",
     planEstudios: [
@@ -385,7 +390,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Dominar la clínica pediátrica hospitalaria; manejar emergencias pediátricas; conducir investigación clínica.",
     perfilPosgraduado: "El egresado podrá ejercer como pediatra en hospitales, dirigir servicios de pediatría y realizar investigación clínica.",
     costoMatricula: 2600.0,
-    imagen: "/images/info.jpg",
+    imagen: info,
     modalidad: "Presencial",
     facultad: "Ciencias de la Salud",
     planEstudios: [
@@ -411,7 +416,7 @@ const seed: ProgramaSeed[] = [
     objetivosEspecificos: "Aplicar normas de auditoría vigentes; realizar auditorías gubernamentales; diseñar informes técnicos.",
     perfilPosgraduado: "El egresado podrá desempeñarse como auditor en el sector público y privado.",
     costoMatricula: 2400.0,
-    imagen: "/images/about.jpg",
+    imagen: about,
     modalidad: "Semipresencial",
     facultad: "Ciencias Contables",
     planEstudios: [

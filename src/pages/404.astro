@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+---
+
+<Layout title="Página no encontrada | Posgrado UNSAAC" noindex>
+	<Nav />
+	<main class="mx-auto flex max-w-6xl flex-col items-center px-4 py-24 text-center">
+		<p class="font-anton text-6xl text-white">404</p>
+		<h1 class="mt-2 text-xl font-semibold text-white">Página no encontrada</h1>
+		<p class="mt-2 max-w-md text-sm text-zinc-400">
+			La página que buscas no existe o fue movida. Explora nuestros programas de posgrado desde el inicio.
+		</p>
+		<a
+			href="/"
+			class="mt-8 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-80"
+		>
+			Volver al inicio
+		</a>
+	</main>
+</Layout>

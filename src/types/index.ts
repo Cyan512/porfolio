@@ -1,3 +1,5 @@
+import type { ImageMetadata } from "astro";
+
 export interface ApiResponse<T> {
   success: boolean;
   message: string;
@@ -16,8 +18,8 @@ export interface TipoPrograma {
   id: number;
   nombre: string;
   slug: string;
-  imagenCard: string;
-  imagenHero: string;
+  imagenCard: string | ImageMetadata | null;
+  imagenHero: string | ImageMetadata | null;
 }
 
 export interface IdNombre {
@@ -59,7 +61,7 @@ export interface ProgramaListItem {
   objetivosEspecificos: string;
   perfilPosgraduado: string;
   costoMatricula: number;
-  imagen: string;
+  imagen: string | ImageMetadata | null;
   modalidad: Modalidad;
   facultad: Facultad;
   tipoPrograma: TipoPrograma;

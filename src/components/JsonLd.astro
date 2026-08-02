@@ -1,0 +1,16 @@
+---
+type JsonLdValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonLdValue[]
+  | { [key: string]: JsonLdValue };
+
+const { data } = Astro.props as { data: JsonLdValue };
+---
+
+<script
+	type="application/ld+json"
+	set:html={JSON.stringify(data)}
+/>
