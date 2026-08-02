@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @font-face {
     font-family: "Anton";
     font-style: normal;
@@ -16,112 +17,4 @@
     font-display: swap;
     src: url("/fonts/inter-latin.woff2") format("woff2");
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-:root {
-    --primary: #951B41;
-    --secondary: #F48E1F;
-    --tertiary: #CC2046;
-    --fonts: #292932;
-    --back: #FFFFFE;
-}
-
-@theme {
-    --font-display: "Anton", sans-serif;
-    --font-body: "Inter", sans-serif;
-    --font-sans: "Inter", sans-serif;
-
-    --text-title-small: 20px;
-    --text-title-small--line-height: 1;
-
-    --text-body-medium: 14px;
-    --text-body-medium--line-height: 1.5;
-    --text-body-small: 8px;
-    --text-body-small--line-height: 1;
-
-    --color-primary: var(--primary);
-    --color-secondary: var(--secondary);
-    --color-tertiary: var(--tertiary);
-    --color-fonts: var(--fonts);
-    --color-back: var(--back);
-
-    --color-neutral-white: #f7f9fb;
-    --color-neutral-black: #000004;
-    --color-neutral-dark: #353838;
-    --color-neutral-light: #8aa5ad;
-
-    --color-red-light: #d12027;
-    --color-red-dark: #8d191b;
-
-    --color-blue-dark: #081d62;
-}
-
-@layer base {
-    html {
-        margin: 0;
-        width: 100%;
-        min-height: 100%;
-        background-color: var(--color-neutral-black);
-        color: var(--color-neutral-white);
-        color-scheme: dark;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: clip;
-        scrollbar-width: thin;
-        scrollbar-color: var(--color-red-light) var(--color-blue-dark);
-    }
-
-    html::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    html::-webkit-scrollbar-track {
-        background: var(--color-blue-dark);
-    }
-
-    html::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg,
-                var(--color-red-light) 0%,
-                var(--color-red-dark) 100%);
-        border-radius: 999px;
-        border: 2px solid var(--color-blue-dark);
-    }
-
-    html::-webkit-scrollbar-thumb:hover {
-        background: var(--color-red-light);
-    }
-
-    body {
-        margin: 0;
-        width: 100%;
-        min-height: 100%;
-    }
-
-    .font-display {
-        font-weight: 400;
-        font-synthesis-weight: none;
-    }
-
-}
-
-@layer components {
-    .pill {
-        @apply bg-neutral-dark/60 backdrop-blur-md text-neutral-white transition-colors hover:bg-neutral-dark/80;
-    }
-
-    .pin-surface {
-        display: flex;
-        min-height: 100vh;
-        align-items: center;
-        overflow: hidden;
-        transform-origin: 50% 0%;
-        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .pin-surface {
-            clip-path: none;
-            transform: none;
-        }
-    }
 }
